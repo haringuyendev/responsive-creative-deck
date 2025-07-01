@@ -65,10 +65,14 @@ const Skills = () => {
           {skillCategories.map((category, categoryIndex) => (
             <div 
               key={category.title} 
-              className="relative group animate-fade-in"
+              className="relative group animate-fade-in overflow-hidden"
               style={{ animationDelay: `${categoryIndex * 0.2}s` }}
             >
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+              <div className="absolute top-0 left-full w-full h-0.5 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 group-hover:animate-[slide-border_1s_ease-out] opacity-0 group-hover:opacity-100"></div>
+              <div className="absolute right-0 top-full w-0.5 h-full bg-gradient-to-b from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 group-hover:animate-[slide-border-vertical_1s_ease-out_0.25s] opacity-0 group-hover:opacity-100"></div>
+              <div className="absolute bottom-0 right-full w-full h-0.5 bg-gradient-to-l from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 group-hover:animate-[slide-border_1s_ease-out_0.5s] opacity-0 group-hover:opacity-100"></div>
+              <div className="absolute left-0 bottom-full w-0.5 h-full bg-gradient-to-t from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 group-hover:animate-[slide-border-vertical_1s_ease-out_0.75s] opacity-0 group-hover:opacity-100"></div>
+              
               <Card className="relative hover-lift bg-background">
                 <CardHeader>
                   <CardTitle className="text-xl text-orange-500">
