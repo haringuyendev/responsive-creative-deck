@@ -1,5 +1,7 @@
 
 import { Progress } from '@/components/ui/progress';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const Skills = () => {
   const skillCategories = [
@@ -13,7 +15,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "Web Technologies",
+      title: "Web Technologies", 
       skills: [
         { name: "HTML/CSS", level: 92 },
         { name: "JavaScript", level: 78 },
@@ -32,6 +34,21 @@ const Skills = () => {
     }
   ];
 
+  const toolsAndPlatforms = [
+    "Adobe Creative Suite",
+    "Sketch",
+    "InVision",
+    "Principle",
+    "Webflow", 
+    "Framer",
+    "Canva",
+    "Procreate",
+    "Blender",
+    "Cinema 4D",
+    "After Effects",
+    "Premiere Pro"
+  ];
+
   return (
     <section id="skills" className="py-20">
       <div className="container mx-auto px-6">
@@ -44,17 +61,19 @@ const Skills = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
-            <div 
+            <Card 
               key={category.title} 
-              className="animate-fade-in"
+              className="animate-fade-in hover-lift"
               style={{ animationDelay: `${categoryIndex * 0.2}s` }}
             >
-              <h3 className="text-xl font-semibold mb-6 text-orange-500">
-                {category.title}
-              </h3>
-              <div className="space-y-4">
+              <CardHeader>
+                <CardTitle className="text-xl text-orange-500">
+                  {category.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name} className="space-y-2">
                     <div className="flex justify-between items-center">
@@ -70,9 +89,27 @@ const Skills = () => {
                     />
                   </div>
                 ))}
-              </div>
-            </div>
+              </CardContent>
+            </Card>
           ))}
+        </div>
+
+        <div className="text-center">
+          <h3 className="text-2xl font-bold mb-8">
+            Tools & <span className="text-gradient">Platforms</span>
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {toolsAndPlatforms.map((tool, index) => (
+              <Badge 
+                key={tool} 
+                variant="secondary" 
+                className="px-4 py-2 text-sm hover:bg-orange-100 hover:text-orange-700 dark:hover:bg-orange-900 dark:hover:text-orange-300 transition-colors animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                {tool}
+              </Badge>
+            ))}
+          </div>
         </div>
       </div>
     </section>
