@@ -63,34 +63,37 @@ const Skills = () => {
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
           {skillCategories.map((category, categoryIndex) => (
-            <Card 
+            <div 
               key={category.title} 
-              className="animate-fade-in hover-lift"
+              className="relative group animate-fade-in"
               style={{ animationDelay: `${categoryIndex * 0.2}s` }}
             >
-              <CardHeader>
-                <CardTitle className="text-xl text-orange-500">
-                  {category.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                {category.skills.map((skill, skillIndex) => (
-                  <div key={skill.name} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium">{skill.name}</span>
-                      <span className="text-sm text-muted-foreground">{skill.level}%</span>
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse"></div>
+              <Card className="relative hover-lift bg-background">
+                <CardHeader>
+                  <CardTitle className="text-xl text-orange-500">
+                    {category.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div key={skill.name} className="space-y-2">
+                      <div className="flex justify-between items-center">
+                        <span className="font-medium">{skill.name}</span>
+                        <span className="text-sm text-muted-foreground">{skill.level}%</span>
+                      </div>
+                      <Progress 
+                        value={skill.level} 
+                        className="h-2"
+                        style={{
+                          animationDelay: `${(categoryIndex * 4 + skillIndex) * 0.1 + 0.5}s`
+                        }}
+                      />
                     </div>
-                    <Progress 
-                      value={skill.level} 
-                      className="h-2"
-                      style={{
-                        animationDelay: `${(categoryIndex * 4 + skillIndex) * 0.1 + 0.5}s`
-                      }}
-                    />
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+                  ))}
+                </CardContent>
+              </Card>
+            </div>
           ))}
         </div>
 
